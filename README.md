@@ -1,71 +1,39 @@
-<p align="center">
-<a href="https://github.com/rubensrocha/laravel-breeze-multi-auth-admin/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/rubensrocha/laravel-breeze-multi-auth-admin"></a>
-<a href="https://github.com/rubensrocha/laravel-breeze-multi-auth-admin/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/rubensrocha/laravel-breeze-multi-auth-admin"></a>
-<a href="https://packagist.org/packages/rubensrocha/laravel-breeze-multi-auth-admin"><img src="https://img.shields.io/packagist/dt/rubensrocha/laravel-breeze-multi-auth-admin" alt="Total Downloads"></a>
-<a href="https://github.com/rubensrocha/laravel-breeze-multi-auth-admin/blob/main/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/rubensrocha/laravel-breeze-multi-auth-admin"></a>
-</p>
+📌Note
+This project is made for learning purposes (UAS)
 
-## About This Repository
+✨ Panduan Penggunaan
+Saat pertama kali membuka http://127.0.0.1:8000, akan muncul tampilan default Laravel.
+Fitur utama ada di pojok kanan atas:
 
-This is a repository created to serve as a basis for those who intend to create a Laravel project using Breeze with multiple guards/auth, where it is possible to create a website and an admin panel with separate authentication for each one.
+🔐 Login
+📝 Register
 
-Unlike many tutorials that teach you how to achieve this goal, this repository is in fact complete and has all the basic functional functions in the admin panel.
+👤 User
+Register akun terlebih dulu jika belum punya akun.
 
-### Site(User)
-- Register
-- Login
-- Logout
-- Forgot Password
-- Reset Password
-- Confirm Password
-- Verify Email
+Login dengan akun user.
 
-### Admin
-- Login with email or username
-- Logout
-- Forgot Password
-- Reset Password
-- Confirm Password
-- Verify Email
+Setelah login, untuk menggunakan fitur user harus langsung akses link berikut:
 
-## Installation
+📚 Melihat daftar buku:
+http://127.0.0.1:8000/user/books
 
-Clone this repo
+🔄 Melihat daftar peminjaman:
+http://127.0.0.1:8000/user/borrowings
 
-    git clone https://github.com/laravel/breeze.git
+🛠 Admin
+Untuk masuk sebagai admin, langsung buka:
+http://127.0.0.1:8000/admin
+lalu login dengan akun admin.
+Note : admin@example.com password : admin123
 
-Create env file and set up your DB connection
+Fitur admin terpisah, harus akses manual:
+📖 Mengelola buku (CRUD):
+http://127.0.0.1:8000/admin/books
+➕ Menambah buku:
+http://127.0.0.1:8000/admin/books/create
 
-    cp .env.example .env
+⚠️ Catatan
+Aplikasi ini belum memiliki navigasi langsung antar fitur, sehingga setiap fitur diakses lewat alamat URL manual (copy-paste ke bar browser).
 
-Generate key
-
-    php artisan key:generate
-
-Install packages
-
-    composer install
-
-Run migrations without admins/users
-
-    php artisan migrate
-
-Or run migrations with admins/users
-
-    php artisan migrate --seed
-
-Default password for admin and users is "password"
-
-## References
-- [Laravel 9](https://laravel.com)
-- [Laravel Breeze](https://laravel.com/docs/9.x/starter-kits#laravel-breeze)
-
-## Contributing
-
-Anyone who wants to make some improvement just make a Pull-Request.
-
-If you can achieve the same goal using Jetstream, please share your solution with me as I am very interested.
-
-## License
-
-The Laravel framework and this repository is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Pastikan untuk setiap perubahan yang dilakukan di admin atau user harus refresh browser untuk melihat setiap perubahan tanpa refresh browser perubahan tidak akan terlihat
