@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\BookController;
+use App\Http\Controllers\User\BookController as UserBookController;
+use App\Http\Controllers\User\BorrowingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +30,29 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->middleware('password.confirm')
         ->name('profile');
 });
+
+Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', function () {
+        return view('admin.dashboard'); // atau kamu bisa ganti dengan controller kalau ada
+    })->name('dashboard');
+
+    Route::resource('books', BookController::class);
+});
+
+
+Route::middleware(['auth', 'verified'])->prefix('user')->name('user.')->group(function () {
+    Route::get('/books', [UserBookController::class, 'index'])->name('books.index');
+    Route::post('/books/{book}/borrow', [UserBookController::class, 'borrow'])->name('books.borrow');
+});
+
+
+Route::middleware(['auth', 'verified'])->prefix('user')->name('user.')->group(function () {
+    Route::get('/books', [UserBookController::class, 'index'])->name('books.index');
+    Route::post('/books/{book}/borrow', [UserBookController::class, 'borrow'])->name('books.borrow');
+
+    // 🔽 Tambahan ini:
+    Route::get('/borrowings', [BorrowingController::class, 'index'])->name('borrowings.index');
+    Route::post('/borrowings/{borrowing}/return', [BorrowingController::class, 'return'])->name('borrowings.return');
+});
+
+
